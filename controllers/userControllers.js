@@ -12,6 +12,20 @@ const userController = {
   },
 
   //get single user by id
+  getUserById(req, res) {
+    User.findOne({ _id: req.params.id })
+      .then((userDataDB) => {
+        if (!userDataDB) {
+          res.status(404).json({ message: 'No user found with this ID' });
+          return;
+        }
+        res.json(userDataDB);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 
   //create user
   createUser(req, res) {
