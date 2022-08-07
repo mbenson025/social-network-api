@@ -1,27 +1,29 @@
 const { User, Thought } = require('../models');
-const express = require('express');
 
 const userController = {
   //get all users
   getAllUsers(req, res) {
     User.find({})
-      .then((user) => res.json(user))
-      .catch((err) => res.status(500).json(err));
+      .then((userDataDB) => res.json(userDataDB))
+      .catch((err) => {
+        console.error({ message: err });
+        res.status(500).json(err);
+      });
   },
 
-  //get single user
+  //get single user by id
 
   //create user
   createUser(req, res) {
     User.create(req.body)
-      .then((user) => res.json(user))
+      .then((userDataDB) => res.json(userDataDB))
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
       });
   },
 
-  //delete user
+  //delete a user
 
   //add friend
 

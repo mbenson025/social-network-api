@@ -13,21 +13,23 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      //validate email format from https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax. delete this note after testing
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         'Please enter a valid email address',
       ],
     },
-    thoughts: {
-      //actvity 21 models/Post ln 8
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-    },
-    friends: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought',
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     toJSON: {
