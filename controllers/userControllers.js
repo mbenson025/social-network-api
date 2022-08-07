@@ -57,7 +57,18 @@ const userController = {
       });
   },
 
-  //delete a user
+  //destroy a user
+  destroyUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.id })
+      .then((userDataDB) => {
+        if (!userDataDB) {
+          res.status(404).json({ message: 'this user does not exist' });
+          return;
+        }
+        res.json(userDataDB);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 
   //add friend
 

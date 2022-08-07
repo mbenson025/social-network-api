@@ -5,7 +5,7 @@ const {
   getUserById,
   createUser,
   updateUser,
-  deleteUser,
+  destroyUser,
   addFriend,
   destroyFriend,
 } = require('../../controllers/userControllers.js');
@@ -14,8 +14,7 @@ const {
 router.route('/').get(getAllUsers).post(createUser);
 
 // /api/users/:userId
-router.route('/:id').get(getUserById).put(updateUser);
-// .delete(deleteUser);
+router.route('/:id').get(getUserById).put(updateUser).delete(destroyUser);
 
 // /api/users/:userId/friends/:friendId
 // router
