@@ -32,12 +32,31 @@ const thoughtController = {
     Thought.create(req.body)
       .then((tDB) => res.json(tDB))
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         return res.status(500).json(err);
       });
   },
 
   //update thought
+  updateThought(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $set: req.body },
+      { runValidators: true, new: true }
+    )
+      .then((tDB) => {
+        if (!tDB) {
+          res.status(404).json({ message: 'No thought found to update' });
+          return;
+        }
+        res.json(tDB);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+      });
+  },
+
   //destroy thought
   //add reaction
   //destroy reaction
