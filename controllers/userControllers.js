@@ -37,6 +37,26 @@ const userController = {
       });
   },
 
+  //update user by id -(format act 26 appController.js)
+  updateUser(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { runValidators: true, new: true }
+    )
+      .then((userDataDB) => {
+        if (!userDataDB) {
+          res.status(404).json({ message: 'Cannot find a user with this id' });
+          return;
+        }
+        res.json(userDataDB);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
+
   //delete a user
 
   //add friend
