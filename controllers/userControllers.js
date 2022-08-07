@@ -1,7 +1,6 @@
 const { User, Thought } = require('../models');
 
 const userController = {
-  //get all users
   getAllUsers(req, res) {
     User.find({})
       .then((userDataDB) => res.json(userDataDB))
@@ -11,7 +10,6 @@ const userController = {
       });
   },
 
-  //get single user by id
   getUserById(req, res) {
     User.findOne({ _id: req.params.id })
       .then((userDataDB) => {
@@ -27,7 +25,6 @@ const userController = {
       });
   },
 
-  //create user
   createUser(req, res) {
     User.create(req.body)
       .then((userDataDB) => res.json(userDataDB))
@@ -37,7 +34,6 @@ const userController = {
       });
   },
 
-  //update user by id -(format act 26 appController.js)
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.id },
@@ -57,7 +53,6 @@ const userController = {
       });
   },
 
-  //destroy a user
   destroyUser(req, res) {
     User.findOneAndDelete({ _id: req.params.id })
       .then((userDataDB) => {
@@ -70,8 +65,35 @@ const userController = {
       .catch((err) => res.status(500).json(err));
   },
 
-  //add friend
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $push: { friends: req.params.friendId } },
+      { new: true }
+    )
+      .then((fDataDB) => {
+        !fDataDB
+          ? res.status(404).json({ message: 'No friend found with this id' })
+          : res.json(fDataDB);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 
-  //destroy friend
+  destroyFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    )
+      .then((fDataDB) => {
+        if (!fDataDB) {
+          res.status(404).json({ message: 'No friend found with this id' });
+          return;
+        }
+        res.json(fDataDB);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
+
 module.exports = userController;
