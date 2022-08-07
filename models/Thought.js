@@ -1,32 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
 
-const thoughtSchema = new Schema(
-  {
-    thoughtText: {
-      type: String,
-      required: true,
-      minLength: 1,
-      maxLength: 280,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      //add getter method for datestamp
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    reactions: [{ reactionSchema }],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-    id: false,
-  }
-);
-
 //reaction is a subdoc of thought
 const reactionSchema = new Schema(
   {
@@ -48,6 +21,33 @@ const reactionSchema = new Schema(
       default: Date.now,
       //add getter method for datestamp
     },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+);
+
+const thoughtSchema = new Schema(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 280,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      //add getter method for datestamp
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    reactions: [{ reactionSchema }],
   },
   {
     toJSON: {

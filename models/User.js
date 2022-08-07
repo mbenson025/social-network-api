@@ -14,10 +14,9 @@ const userSchema = new Schema(
       unique: true,
       required: true,
       //validate email format from https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax. delete this note after testing
-      validate: [validateEmail, 'Please fill a valid email address'],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        'Please fill a valid email address',
+        'Please enter a valid email address',
       ],
     },
     thoughts: {

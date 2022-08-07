@@ -1,4 +1,4 @@
-# social-network-api
+# Social Network API
 
 ![GitHub](https://img.shields.io/github/license/mbenson025/social-network-api)
 ![GitHub language count](https://img.shields.io/github/languages/count/mbenson025/social-network-api)
