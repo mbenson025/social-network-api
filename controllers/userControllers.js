@@ -8,16 +8,23 @@ const userController = {
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
+
+  //get single user
+
+  //create user
+  createUser(req, res) {
+    User.create(req.body)
+      .then((user) => res.json(user))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+
+  //delete user
+
+  //add friend
+
+  //destroy friend
 };
-
-//get single user
-
-//create user
-
-//delete user
-
-//add friend
-
-//destroy friend
-
 module.exports = userController;

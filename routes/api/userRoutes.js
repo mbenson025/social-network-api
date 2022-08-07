@@ -11,7 +11,7 @@ const {
 } = require('../../controllers/userControllers.js');
 
 // /api/users
-// router.route('/').get(getAllUsers).post(createUser);
+router.route('/').get(getAllUsers).post(createUser);
 
 // /api/users/:userId
 // router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
