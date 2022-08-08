@@ -70,7 +70,34 @@ const thoughtController = {
       .catch((err) => res.status(500).json(err));
   },
   //add reaction
+  addReaction(req, res) {
+    // console.log(req.body);
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { assignments: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((rDB) =>
+        !rDB
+          ? res.status(404).json({ message: 'No reaction found with this id' })
+          : res.json(rDB)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
   //destroy reaction
+  destroyReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
+      { runValidators: true, new: true }
+    )
+      .then((rDB) =>
+        !rDB
+          ? res.status(404).json({ message: 'No thought found with that id' })
+          : res.json(rDB)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 };
 
 module.exports = thoughtController;
