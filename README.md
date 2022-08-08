@@ -60,19 +60,15 @@ npm start
 
 [Full Video Demo](https://drive.google.com/file/d/1hv7glbcruOarQBFZLpK51mW7eu1PEg0p/view)
 
+<br>
+
 ## Screenshots
 
 <br>
 <img src="/assets/mongocompass.jpg" alt="Mongo Compass" title="Mongo Compass DB">
 <br>
 <br>
-<img src="/assets/getthoughts.jpg" alt="insomnia routes" title="Insomnia Dashboard">
-<br>
-<br>
-<!-- <img src="/assets/dash.jpg" alt="dashboard page" title="Dashboard Page"> -->
-<br>
-<br>
-<!-- <img src="/assets/edit.jpg" alt="individual post page" title="Individual Content"> -->
+<img src="/assets/thoughtsget.jpg" alt="insomnia routes" title="Insomnia Dashboard">
 <br>
 <br>
 

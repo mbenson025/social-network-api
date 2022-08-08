@@ -19,7 +19,8 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      //add getter method for datestamp
+      get: (formatDate) =>
+        `${formatDate.toLocaleDateString()} ${formatDate.toLocaleTimeString()}`,
     },
   },
   {
@@ -40,7 +41,8 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      //add getter method for datestamp
+      get: (formatDate) =>
+        `${formatDate.toLocaleDateString()} ${formatDate.toLocaleTimeString()}`,
     },
     username: {
       type: String,
