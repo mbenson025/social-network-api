@@ -28,7 +28,7 @@ Backend model for a social network application using MongoDB and Mongoose. CRUD(
 
 ## Installation
 
-[Node.js](https://nodejs.org/en/) installation is required. [MongoDB](https://www.mongodb.com/) installation is also required. Clone the repo and follow usage commands.
+[Node.js](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/) installation required. Clone the repo and follow usage commands.
 
 <br>
 
@@ -58,7 +58,7 @@ npm start
 
 ## Demo
 
-[Full Video Demo](https://drive.google.com/file/d/1OISuCuYULZ2sXnZHakLa-26QSQqtAlWD/view)
+[Full Video Demo](https://drive.google.com/file/d/1hv7glbcruOarQBFZLpK51mW7eu1PEg0p/view)
 
 ## Screenshots
 
