@@ -1,7 +1,6 @@
 const { User, Thought } = require('../models');
 
 const thoughtController = {
-  //get all thoughts
   getAllThoughts(req, res) {
     Thought.find({})
       .then((tDB) => res.json(tDB))
@@ -11,7 +10,6 @@ const thoughtController = {
       });
   },
 
-  //get a thought by id
   getThoughtById(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .then((tDB) => {
@@ -27,7 +25,6 @@ const thoughtController = {
       });
   },
 
-  //add/create a thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((tDB) => res.json(tDB))
@@ -37,7 +34,6 @@ const thoughtController = {
       });
   },
 
-  //update thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -57,7 +53,6 @@ const thoughtController = {
       });
   },
 
-  //destroy thought
   destroyThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((tDB) => {
@@ -69,13 +64,12 @@ const thoughtController = {
       })
       .catch((err) => res.status(500).json(err));
   },
-  //add reaction
+
   addReaction(req, res) {
-    // console.log(req.body);
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { assignments: req.body } },
-      { runValidators: true, new: true }
+      { $addToSet: { reactions: req.body } },
+      { new: true }
     )
       .then((rDB) =>
         !rDB
@@ -84,12 +78,12 @@ const thoughtController = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  //destroy reaction
+
   destroyReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
-      { runValidators: true, new: true }
+      { $pull: { reaction: { reactionId: req.params.reactionId } } },
+      { new: true }
     )
       .then((rDB) =>
         !rDB
