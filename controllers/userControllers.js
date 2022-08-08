@@ -42,7 +42,7 @@ const userController = {
     )
       .then((userDataDB) => {
         if (!userDataDB) {
-          res.status(404).json({ message: 'Cannot find a user with this id' });
+          res.status(404).json({ message: 'Cannot find user with this id' });
           return;
         }
         res.json(userDataDB);
