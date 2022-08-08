@@ -21,6 +21,7 @@
 
 ## Description
 
+Backend model for a social network application using MongoDB and Mongoose. CRUD(Create, Read, Update and Delete) operations can be ran on users and thoughts. Users have the ability to add other users as friends and leave reactions on thoughts.
 <br>
 <br>
 
@@ -60,28 +61,30 @@ npm start
 <img src="/assets/mongocompass.jpg" alt="Mongo Compass" title="Mongo Compass DB">
 <br>
 <br>
-<!-- <img src="/public/assets/home.jpg" alt="home page" title="Blog Home Page"> -->
+<img src="/assets/getthoughts.jpg" alt="insomnia routes" title="Insomnia Dashboard">
 <br>
 <br>
-<!-- <img src="/public/assets/dash.jpg" alt="dashboard page" title="Dashboard Page"> -->
+<!-- <img src="/assets/dash.jpg" alt="dashboard page" title="Dashboard Page"> -->
 <br>
 <br>
-<!-- <img src="/public/assets/edit.jpg" alt="individual post page" title="Individual Content"> -->
+<!-- <img src="/assets/edit.jpg" alt="individual post page" title="Individual Content"> -->
 <br>
 <br>
 
 ## Technologies Used
 
-- [node.js](https://nodejs.org/en/)
-- [mongodb](https://www.mongodb.com/)
-- [mongoose](https://www.npmjs.com/package/mongoose)
-- [nodemon](https://www.npmjs.com/package/nodemon)
-- [express](https://expressjs.com/)
-- [insomnia](https://insomnia.rest/)
+- [Node.js](https://nodejs.org/en/)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Express](https://expressjs.com/)
+- [Insomnia](https://insomnia.rest/)
 
 <br>
 
 ## Questions
+
+<br>
 
 Contact me here:
 
@@ -92,6 +95,8 @@ Contact me here:
 
 ## License
 
-MIT License
+<br>
 
 Copyright (c) 2022 Mason Benson
+
+Licensed under the [MIT](LICENSE) license.
