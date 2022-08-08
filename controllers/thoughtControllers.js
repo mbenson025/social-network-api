@@ -58,6 +58,17 @@ const thoughtController = {
   },
 
   //destroy thought
+  destroyThought(req, res) {
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+      .then((tDB) => {
+        if (!tDB) {
+          res.status(404).json({ message: 'this thought does not exist' });
+          return;
+        }
+        res.json(tDB);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
   //add reaction
   //destroy reaction
 };
