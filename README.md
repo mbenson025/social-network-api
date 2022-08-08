@@ -11,6 +11,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Demo](#demo)
 - [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Credits](#credits)
@@ -54,6 +55,10 @@ npm start
 ```
 
 <br>
+
+## Demo
+
+[Full Video Demo](https://drive.google.com/file/d/1OISuCuYULZ2sXnZHakLa-26QSQqtAlWD/view)
 
 ## Screenshots
 
