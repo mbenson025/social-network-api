@@ -1,8 +1,9 @@
-const { User, Thought } = require('../models');
+const { User } = require('../models');
 
 const userController = {
   getAllUsers(req, res) {
     User.find({})
+      .select('-__v')
       .then((userDataDB) => res.json(userDataDB))
       .catch((err) => {
         console.error({ message: err });
@@ -12,6 +13,7 @@ const userController = {
 
   getUserById(req, res) {
     User.findOne({ _id: req.params.id })
+      .select('-__v')
       .then((userDataDB) => {
         if (!userDataDB) {
           res.status(404).json({ message: 'No user found with this ID' });
@@ -40,6 +42,7 @@ const userController = {
       { $set: req.body },
       { runValidators: true, new: true }
     )
+      .select('-__v')
       .then((userDataDB) => {
         if (!userDataDB) {
           res.status(404).json({ message: 'Cannot find user with this id' });
@@ -71,6 +74,7 @@ const userController = {
       { $push: { friends: req.params.friendId } },
       { new: true }
     )
+      .select('-__v')
       .then((fDataDB) => {
         !fDataDB
           ? res.status(404).json({ message: 'No friend found with this id' })
@@ -85,6 +89,7 @@ const userController = {
       { $pull: { friends: req.params.friendId } },
       { new: true }
     )
+      .select('-__v')
       .then((fDataDB) => {
         if (!fDataDB) {
           res.status(404).json({ message: 'No friend found with this id' });

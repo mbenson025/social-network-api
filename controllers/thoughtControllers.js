@@ -3,6 +3,7 @@ const { User, Thought } = require('../models');
 const thoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
+      .select('-__v')
       .then((tDB) => res.json(tDB))
       .catch((err) => {
         console.error({ message: err });
@@ -12,6 +13,7 @@ const thoughtController = {
 
   getThoughtById(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
+      .select('-__v')
       .then((tDB) => {
         if (!tDB) {
           res.status(404).json({ message: 'No thought found with this id' });
@@ -40,6 +42,7 @@ const thoughtController = {
       { $set: req.body },
       { runValidators: true, new: true }
     )
+      .select('-__v')
       .then((tDB) => {
         if (!tDB) {
           res.status(404).json({ message: 'No thought found to update' });
@@ -71,6 +74,7 @@ const thoughtController = {
       { $addToSet: { reactions: req.body } },
       { new: true }
     )
+      .select('-__v')
       .then((rDB) =>
         !rDB
           ? res.status(404).json({ message: 'No reaction found with this id' })
